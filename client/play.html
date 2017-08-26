@@ -1,0 +1,26 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>INOT</title>
+  <link rel="stylesheet" href= "/client/src/css/main.css"
+
+</head>
+
+<body>
+
+
+  <h1> <center> INOT </center></h1>
+  <p id="connectedText"></p>
+  <center><input type="text" oninput="update(true, {current_input : this.value})"></center>
+</body>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="/client/src/js/image_loader.js"></script>
+<script src="/client/src/js/menu.js"></script>
+<script src="/client/src/js/input.js"></script>
+<script src="/client/src/js/update.js"></script>
+
+</html>
