@@ -63,7 +63,7 @@ signButton.onclick = function(){
     ignInput.style.display = "";
     backToLoginButton.style.display = "";
     connectButton.style.display = "none";
-    actionText.innerHTML = "Sign Up"
+    actionText.innerHTML = "<center>" + "Sign Up" + "</center>"
     signUpText.style.display = "none";
     connectedText.innerHTML = "";
 
