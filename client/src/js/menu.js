@@ -53,7 +53,7 @@ backToLoginButton.onclick = function(){
   ignInput.value = "";
 }
 
-signButton.onclick = function(){
+signup = function(){
   if(ignInput.style.display == "none"){
 
     nameInput.value = "";
@@ -88,7 +88,7 @@ signButton.onclick = function(){
   }
 }
 
-if (connectButton != null) connectButton.onclick = function(){
+connect = function(){
 
     socket = io();
 
