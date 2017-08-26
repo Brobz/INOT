@@ -10,12 +10,10 @@ exports.Room = function(mnS, mxS, colors){
   self.removePlayer = function(player){
     index = self.players.indexOf(player);
     self.players.splice(index, 1);
-    self.updateTeams();
   }
 
   self.addPlayer = function(player){
     self.players.push(player);
-    self.updateTeams();
   }
 
   self.checkForWin = function(){
