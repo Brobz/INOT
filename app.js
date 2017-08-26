@@ -22,10 +22,16 @@ server.listen(process.env.PORT || 2000);
 console.log("Server Ready!");
 
 
-var SOCKET_LIST = {};
-var PLAYER_LIST = {};
+
 
 var Player = require("./server/player.js").Player;
+var Room = require("./server/room.js").Room;
+
+var SOCKET_LIST = {};
+var PLAYER_LIST = {};
+var ROOM_LIST = [Room(2, 2, ["F10909", "0917F1"])];
+
+ROOM_LIST[0].inGame  = true;
 
 var io = require("socket.io")(server, {});
 io.sockets.on("connection", function(socket){
@@ -64,6 +70,8 @@ io.sockets.on("connection", function(socket){
             p = Player(socket.id, res[0].ign, null);
             PLAYER_LIST[socket.id] = p;
 
+            ROOM_LIST[0].players.push(p);
+
             socket.emit("connected", {
               msg: "Logged in as " + p.name,
               id: socket.id
@@ -85,12 +93,11 @@ io.sockets.on("connection", function(socket){
 
     socket.on("disconnect", function(){Disconnected(socket.id)});
 
+    socket.on("getInput", function(data){getInput(socket.id, data);});
+
 });
 
 function Disconnected(id) {
-  for(var i in SOCKET_LIST){
-    var s = SOCKET_LIST[i];
-  }
   delete SOCKET_LIST[id];
   delete PLAYER_LIST[id];
 
@@ -152,9 +159,26 @@ function getKeyInput(id, data){
 
 }
 
+function getInput(id, data){
+  PLAYER_LIST[id].inputs.push(data.current_input);
+}
+
 function Update(){
   var infoPack = [];
+  for(var key in PLAYER_LIST){
+    infoPack.push({
+      inputs : PLAYER_LIST[key].inputs
+    })
+  }
 
+  for(var i in ROOM_LIST){
+    if(ROOM_LIST[i].inGame){
+      for(var k = 0; k < ROOM_LIST[i].players.length; k++){
+        var s = SOCKET_LIST[ROOM_LIST[i].players[k].id];
+        s.emit("update", false, infoPack);
+      }
+    }
+  }
 
 }
 
