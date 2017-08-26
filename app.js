@@ -25,6 +25,8 @@ console.log("Server Ready!");
 var SOCKET_LIST = {};
 var PLAYER_LIST = {};
 
+var Player = require("./server/player.js").Player;
+
 var io = require("socket.io")(server, {});
 io.sockets.on("connection", function(socket){
     var p;
@@ -67,9 +69,6 @@ io.sockets.on("connection", function(socket){
               id: socket.id
             });
 
-            socket.emit("roomUpdate", {
-              rooms : ROOM_LIST,
-            });
           }else{
             socket.emit("connectionFailed", {msg:"Invalide Username/Password"});
             return;
@@ -89,16 +88,8 @@ io.sockets.on("connection", function(socket){
 });
 
 function Disconnected(id) {
-  for(var i in ROOM_LIST){
-    if(ROOM_LIST[i].players.indexOf(PLAYER_LIST[id]) >= 0){
-      ROOM_LIST[i].removePlayer(PLAYER_LIST[id]);
-    }
-  }
   for(var i in SOCKET_LIST){
     var s = SOCKET_LIST[i];
-    s.emit("roomUpdate", {
-      rooms : ROOM_LIST,
-    });
   }
   delete SOCKET_LIST[id];
   delete PLAYER_LIST[id];
