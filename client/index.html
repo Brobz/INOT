@@ -13,29 +13,13 @@
 
 
   <h1> <center> WELCOME TO INOT </center></h1>
-  <div id="log_sign">
-    <p id="actionText" style= "text-align: center;"> Log In </p>
-    <center><input type="text" id="nameInput" placeholder="Username"></center>
-    <br><br>
-    <center><input type="password" id="passInput" placeholder="Password"></center>
-    <br><br>
-    <center><input type="text" id="ignInput" placeholder="In Game Name" style="display:none;"></center>
-    <br>
-    <center><button id = "connectButton">Log In</button></center>
-    <br>
-    <p id="signUpText"><center>No account? Sign Up!</center></p>
-    <center><button id = "signButton">Sign Up</button></center>
-    <br><br>
-    <center><button id = "backToLoginButton" style="display:none;">Back to Login</button></center>
-    <p id="signedText"></p>
-  </div>
+  <a href = "/login"><button>LOG IN</button></a>
   <p id="connectedText"></p>
   <center><input type="text" oninput="update(true, {current_input : this.value})"></center>
 </body>
 
 <script src="/socket.io/socket.io.js"></script>
 <script src="/client/src/js/image_loader.js"></script>
-<script src="/client/src/js/menu.js"></script>
 <script src="/client/src/js/input.js"></script>
 <script src="/client/src/js/update.js"></script>
 

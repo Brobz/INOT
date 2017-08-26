@@ -12,6 +12,10 @@ app.get("/", function(req, res){
     res.sendFile(__dirname + "/client/index.html");
 });
 
+app.get("/login", function(req, res){
+    res.sendFile(__dirname + "/client/login.html");
+});
+
 app.use("/client", express.static(__dirname + "/client"));
 
 
