@@ -100,6 +100,7 @@ connectButton.onclick = function(){
 
     socket.on("connectionFailed", function(data){connectionFailed(data)});
 
+    socket.on("roomUpdate", function(data){roomUpdate(data)});
 
 
 

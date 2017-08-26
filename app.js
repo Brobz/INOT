@@ -98,6 +98,17 @@ io.sockets.on("connection", function(socket){
 });
 
 function Disconnected(id) {
+  for(var i in ROOM_LIST){
+    if(ROOM_LIST[i].players.indexOf(PLAYER_LIST[id]) >= 0){
+      ROOM_LIST[i].removePlayer(PLAYER_LIST[id]);
+    }
+  }
+  for(var i in SOCKET_LIST){
+    var s = SOCKET_LIST[i];
+    s.emit("roomUpdate", {
+      rooms : ROOM_LIST,
+    });
+  }
   delete SOCKET_LIST[id];
   delete PLAYER_LIST[id];
 
