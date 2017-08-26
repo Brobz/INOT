@@ -14,23 +14,27 @@
 
   <h1> <center> WELCOME TO INOT </center></h1>
   <div id="log_sign">
-    <p id="actionText"> <center> Log In </center> </p>
-    <center> <input type="text" id="nameInput" placeholder="Username"> </center>
+    <p id="actionText" style= "text-align: center;"> Log In </p>
+    <center><input type="text" id="nameInput" placeholder="Username"></center>
     <br><br>
-    <input type="password" id="passInput" placeholder="Password">
+    <center><input type="password" id="passInput" placeholder="Password"></center>
     <br><br>
-    <input type="text" id="ignInput" placeholder="In Game Name" style="display:none;">
+    <center><input type="text" id="ignInput" placeholder="In Game Name" style="display:none;"></center>
     <br>
-    <button id = "connectButton">Log In</button>
+    <center><button id = "connectButton">Log In</button></center>
     <br>
-    <p id="signUpText">No account? Sign Up!</p>
-    <button id = "signButton">Sign Up</button>
+    <p id="signUpText"><center>No account? Sign Up!</center></p>
+    <center><button id = "signButton">Sign Up</button></center>
     <br><br>
-    <button id = "backToLoginButton" style="display:none;">Back to Login</button>
+    <center><button id = "backToLoginButton" style="display:none;">Back to Login</button></center>
     <p id="signedText"></p>
   </div>
   <p id="connectedText"></p>
+<<<<<<< HEAD
   <input type="text" oninput="update(true, {current_input : this.value})">
+=======
+  <center><input type="text" oninput="update()"></center>
+>>>>>>> 9a6f4cacf05897c84639599a405f944f6ef2b9e6
 </body>
 
 <script src="/socket.io/socket.io.js"></script>
