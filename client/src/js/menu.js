@@ -93,11 +93,11 @@ connect = function(){
 
 }
 
-nameInput.onkeypress = passInput.onkeypress = function(e){
+checkIfReturn = function(e){
     if (!e) e = window.event;
     var keyCode = e.keyCode || e.which;
     if (keyCode == '13'){
       if(connectButton.style.display == "")
-        connectButton.onclick();
+        connect();
     }
 }
