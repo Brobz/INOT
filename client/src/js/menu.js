@@ -88,7 +88,7 @@ signButton.onclick = function(){
   }
 }
 
-if (connectButton connectButton.onclick = function(){
+if (connectButton != null) connectButton.onclick = function(){
 
     socket = io();
 
