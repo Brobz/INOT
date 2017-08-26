@@ -31,8 +31,6 @@ function connected(data){
 
   socket.on("endGame", function(data){endGame(data)});
 
-  wait(1000);
-
   window.location.href = "/play";
 
 
