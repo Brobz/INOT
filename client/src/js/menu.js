@@ -40,19 +40,6 @@ function connectionFailed(data){
   document.getElementById("connectedText").innerHTML = data.msg;
 }
 
-backToLoginButton.onclick = function(){
-  ignInput.style.display = "none";
-  backToLoginButton.style.display = "none";
-  connectButton.style.display = "";
-  actionText.innerHTML = "Log In"
-  signUpText.style.display = "";
-  signedText.innerHTML = "";
-  connectedText.innerHTML = "";
-  nameInput.value = "";
-  passInput.value = "";
-  ignInput.value = "";
-}
-
 signup = function(){
   if(ignInput.style.display == "none"){
 
