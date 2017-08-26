@@ -19,9 +19,6 @@ var startGameButtons = [startGame1, startGame2, startGame3];
 
 var winners = ["", "", ""]
 
-canvas.font = "15px Monaco";
-canvas.textAlign = 'center';
-
 function connected(data){
 
   id = data.id;
