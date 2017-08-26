@@ -81,11 +81,14 @@ a:hover,a:focus{color:#165db5;text-decoration:underline}
     color: #FFFFFF;
 }
 
+input{
+  text-align: center;
+}
+
 input, button, select, textarea {
     font-family: inherit;
     font-size: inherit;
     line-height: inherit;
-    text-align: center;
 }
 button, html input[type="button"], input[type="reset"], input[type="submit"] {
     cursor: pointer;
