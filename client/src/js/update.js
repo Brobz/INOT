@@ -1,4 +1,4 @@
-function update(data){
+function update(){
   //fuck
   console.log("holaguey");
 }
