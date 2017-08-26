@@ -85,6 +85,7 @@ input, button, select, textarea {
     font-family: inherit;
     font-size: inherit;
     line-height: inherit;
+    text-align: center;
 }
 button, html input[type="button"], input[type="reset"], input[type="submit"] {
     cursor: pointer;
