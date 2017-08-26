@@ -1,0 +1,65 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>AFI</title>
+
+</head>
+
+<body>
+
+
+  <h1>Arcade Fighters Ish</h1>
+  <div id="log_sign">
+    <p id="actionText"> Log In </p>
+    <input type="text" id="nameInput" placeholder="Username">
+    <br><br>
+    <input type="password" id="passInput" placeholder="Password">
+    <br><br>
+    <input type="text" id="ignInput" placeholder="In Game Name" style="display:none;">
+    <br>
+    <button id = "connectButton">Log In</button>
+    <br>
+    <p id="signUpText">No account? Sign Up!</p>
+    <button id = "signButton">Sign Up</button>
+    <br><br>
+    <button id = "backToLoginButton" style="display:none;">Back to Login</button>
+    <p id="signedText"></p>
+  </div>
+  <p id="connectedText"></p>
+  <canvas id="canvas" width = "500" height="500" style="border: 1px solid #000000; display: none;"></canvas><br>
+  <div id="roomsDiv" style="display: none;">
+    <div id="room1Div">
+      Room 1 - FFA <button id = "joinRoom1Button" onclick="joinRoom(0)">Join</button> <button id = "startGame1" onclick="callForGameStart(0)">Start Game</button>
+      <br>
+      <p id="room1PlayersText"></p>
+      <br>
+    </div>
+    <br>
+    <div id="room2Div">
+      Room 2 - 2v2 <button id = "joinRoom2Button" onclick="joinRoom(1)">Join</button> <button id = "startGame2" onclick="callForGameStart(1)">Start Game</button>
+      <br>
+      <p id="room2PlayersText"></p>
+      <br>
+    </div>
+    <br>
+    <div id="room3Div">
+      Room 3 - 3v3 <button id = "joinRoom3Button" onclick="joinRoom(2)">Join</button> <button id = "startGame3" onclick="callForGameStart(2)">Start Game</button>
+      <br>
+      <p id="room3PlayersText"></p>
+      <br>
+    </div>
+  </div>
+
+</body>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="/client/src/js/image_loader.js"></script>
+<script src="/client/src/js/menu.js"></script>
+<script src="/client/src/js/draw.js"></script>
+<script src="/client/src/js/input.js"></script>
+<script src="/client/src/js/update.js"></script>
+
+</html>
