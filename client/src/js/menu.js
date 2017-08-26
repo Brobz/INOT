@@ -19,9 +19,6 @@ var startGameButtons = [startGame1, startGame2, startGame3];
 
 var winners = ["", "", ""]
 
-var canvasElement = document.getElementById("canvas");
-var canvas = document.getElementById("canvas").getContext("2d");
-
 canvas.font = "15px Monaco";
 canvas.textAlign = 'center';
 
