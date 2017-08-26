@@ -16,6 +16,10 @@ app.get("/login", function(req, res){
     res.sendFile(__dirname + "/client/login.html");
 });
 
+app.get("/signup", function(req, res){
+    res.sendFile(__dirname + "/client/signup.html");
+});
+
 app.use("/client", express.static(__dirname + "/client"));
 
 
