@@ -170,13 +170,6 @@ function Update(){
     if(ROOM_LIST[i].inGame){
       for(var k = 0; k < ROOM_LIST[i].players.length; k++){
         var s = SOCKET_LIST[ROOM_LIST[i].players[k].id];
-        for(var j = 0; j < infoPack.length; j++){
-          if (ROOM_LIST[i].players[k].id != j){
-            for(var x = 0; x < infoPack[j].current_input.length; x++){
-              infoPack[j][x] = "*";
-            }
-          }
-        }
         
         s.emit("update", infoPack);
       }
