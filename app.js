@@ -118,6 +118,10 @@ function joinRoom(id, data){
 
 
 function createRoom(id, data){
+  if(data.roomName.toLowerCase() == "") return;
+  for(var i in ROOM_LIST){
+    if (ROOM_LIST[i].name.toLowerCase() == data.roomName.toLowerCase()) return;
+  }
   var new_room = Room(data.roomName, 2, 5, ["AAAA00", "AAAA00", "AAAA00", "AAA100", "A0AA00"]);
   new_room.SOCKET_LIST  = SOCKET_LIST;
   ROOM_LIST.push(new_room);
@@ -148,10 +152,8 @@ function getInput(id, data){
 
 function startPhase(id){
   for(var i = 0; i < ROOM_LIST.length; i++){
-    if(ROOM_LIST[i].inGame){
-      for(var k = 0; k < ROOM_LIST[i].players.length; k++){
-        if(ROOM_LIST[i].players[k].id == id) ROOM_LIST[i].startPhase();
-      }
+    for(var k = 0; k < ROOM_LIST[i].players.length; k++){
+      if(ROOM_LIST[i].players[k].id == id) ROOM_LIST[i].startPhase();
     }
   }
 }

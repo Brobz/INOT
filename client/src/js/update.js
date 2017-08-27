@@ -1,7 +1,6 @@
 var table = document.getElementById("game_table");
 var input_field = document.getElementById("input_field");
 var rooms_text = document.getElementById("available_rooms")
-var hasStarted = false;
 var current_phase = -1;
 
 function startPhase(){
@@ -31,28 +30,24 @@ function end_game(){
   hasStarted = false;
 }
 
-function update(data){
-  console.log("aa");
+function getKeys(data){
+  socket.emit("getInput", data);
+}
 
+function update(data){
   for(var i = data.length - 1; i > -1; i--){
     rooms_text.innerHTML = "";
     for(var k = 0; k < data[i].room_names.length; k++){
-      console.log("queguey");
       rooms_text.innerHTML += "<br>";
       rooms_text.innerHTML += "Room " + String(Number(k) + 1) +  ": " + data[i].room_names[k] + " | Players: " + data[i].room_sizes[k];
     }
   }
 
-  if (!hasStarted) return;
+  if(current_phase < 0) return;
 
-  if (self){
-    socket.emit("getInput", data);
-    //console.log(data.current_input);
-  }else{
-    for(var i = data.length - 1; i > -1; i--){
-      //console.log(data[i].inputs);
-      table.rows[current_phase].cells[i].innerHTML = data[i].current_input
-    }
+  for(var i = data.length - 1; i > -1; i--){
+    table.rows[0].cells[0].innerHTML = "AAAA";
+    table.rows[current_phase].cells[i].innerHTML = data[i].current_input;
   }
 }
 
