@@ -31,13 +31,17 @@ function end_game(){
   hasStarted = false;
 }
 
-function update(self, data){
+function update(data){
   rooms_text.innerHTML = "";
-
-  for(var i = 0; i < data.rooms.length; i++){
-    rooms_text.innerHTML += "Room " + i + 1 +  ": " + data.rooms[i].name + " | Players: " + data.rooms.players.length;
-    rooms_text.innerHTML += "\n";
+  console.log(data);
+  console.log(data.room_names);
+  for(var i = data.length - 1; i > -1; i--){
+    for(var k = 0; k < data[i].room_names.length; k++){
+      rooms_text.innerHTML += "Room " + String(Number(k) + 1) +  ": " + data[i].room_names[k] + " | Players: " + data[i].room_sizes[k];
+      rooms_text.innerHTML += "<br>";
+    }
   }
+
   if (!hasStarted) return;
 
   if (self){

@@ -38,7 +38,7 @@ var Room = require("./server/room.js").Room;
 
 var SOCKET_LIST = {};
 var PLAYER_LIST = {};
-var ROOM_LIST = [Room(2, 2, ["F10909", "0917F1"])];
+var ROOM_LIST = [];
 
 ROOM_LIST[0].inGame  = true;
 
@@ -158,11 +158,19 @@ function startPhase(id){
 }
 
 function Update(){
+  var room_names = [];
+  var room_sizes = [];
+  for(var i in ROOM_LIST){
+    room_names.push(ROOM_LIST[i].name);
+    room_sizes.push(ROOM_LIST[i].players.length);
+  }
   var infoPack = [];
   for(var key in PLAYER_LIST){
     infoPack.push({
-      current_input : PLAYER_LIST[key].current_input
-    })
+      current_input : PLAYER_LIST[key].current_input,
+      room_names : room_names,
+      room_sizes : room_sizes
+    });
   }
 
   for(var i in ROOM_LIST){
