@@ -101,28 +101,7 @@ io.sockets.on("connection", function(socket){
     if(p === null)
       return;
 
-    socket.on("joinRoom", function(data){
-      if(ROOM_LIST[data.room].players.length >= ROOM_LIST[data.room].maxSize || ROOM_LIST[data.room].inGame){
-        return;
-      }
-      for(var i in ROOM_LIST){
-        if(ROOM_LIST[i].players.indexOf(p) >= 0){
-          ROOM_LIST[i].removePlayer(p);
-        }
-      }
-      ROOM_LIST[data.room].addPlayer(p);
-
-      for(var i in SOCKET_LIST){
-        var s = SOCKET_LIST[i];
-        s.emit("roomUpdate", {
-          rooms: ROOM_LIST,
-        });
-      }
-    });
-
-    socket.on("createRoom", function(data){
-      ROOM_LIST.push(Room(data.roomName, 2, 5, ["AAAA00", "AAAA00", "AAAA00", "AAA100", "A0AA00"]))
-    });
+    socket.on("createRoom", function(data){createRoom(socket.id, data);});
 
     socket.on("keyPress", function(data){getKeyInput(socket.id, data);});
 
@@ -133,6 +112,10 @@ io.sockets.on("connection", function(socket){
     socket.on("startPhase", function(){startPhase(socket.id);});
 
 });
+
+function createRoom(id, data){
+  ROOM_LIST.push(Room(data.roomName, 2, 5, ["AAAA00", "AAAA00", "AAAA00", "AAA100", "A0AA00"]));
+}
 
 function Disconnected(id) {
   for(var i = 0; i < ROOM_LIST.length; i++){
@@ -148,62 +131,6 @@ function Disconnected(id) {
   delete PLAYER_LIST[id];
 
 
-
-}
-
-function getKeyInput(id, data){
-  /*/
-  if(data.input == "d"){
-    PLAYER_LIST[id].isMovingRight = data.state;
-  }
-  if(data.input == "s"){
-    PLAYER_LIST[id].isMovingDown = data.state;
-  }
-  if(data.input == "a"){
-    PLAYER_LIST[id].isMovingLeft = data.state;
-  }
-  if(data.input == "w"){
-    PLAYER_LIST[id].isMovingUp = data.state;
-  }
-
-  if(data.input == "shoot0"){
-    PLAYER_LIST[id].isShootingLeft = data.state;
-
-    if(data.state){
-      PLAYER_LIST[id].isShootingRight = false;
-      PLAYER_LIST[id].isShootingDown = false;
-      PLAYER_LIST[id].isShootingUp = false;
-    }
-  }
-  if(data.input == "shoot1"){
-    PLAYER_LIST[id].isShootingUp = data.state;
-
-    if(data.state){
-      PLAYER_LIST[id].isShootingRight = false;
-      PLAYER_LIST[id].isShootingDown = false;
-      PLAYER_LIST[id].isShootingLeft = false;
-    }
-  }
-  if(data.input == "shoot2"){
-    PLAYER_LIST[id].isShootingRight = data.state;
-
-    if(data.state){
-      PLAYER_LIST[id].isShootingLeft = false;
-      PLAYER_LIST[id].isShootingDown = false;
-      PLAYER_LIST[id].isShootingUp = false;
-    }
-  }
-  if(data.input == "shoot3"){
-    PLAYER_LIST[id].isShootingDown = data.state;
-
-    if(data.state){
-      PLAYER_LIST[id].isShootingRight = false;
-      PLAYER_LIST[id].isShootingLeft = false;
-      PLAYER_LIST[id].isShootingUp = false;
-    }
-  }
-
-  /*/
 
 }
 
@@ -226,7 +153,8 @@ function Update(){
   var infoPack = [];
   for(var key in PLAYER_LIST){
     infoPack.push({
-      current_input : PLAYER_LIST[key].current_input
+      current_input : PLAYER_LIST[key].current_input,
+      rooms : ROOM_LIST
     })
   }
 

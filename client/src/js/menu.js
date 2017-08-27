@@ -11,7 +11,8 @@ var signedText = document.getElementById("signedText");
 var connectedText = document.getElementById("connectedText");
 var actionText = document.getElementById("actionText");
 var signUpText = document.getElementById("signUpText");
-var createRoomText = document.getElementById("join_room_name");
+var createRoomText = document.getElementById("create_room_name");
+var joinRoomText = document.getElementById("join_room_name");
 
 var startGame1 = document.getElementById("startGame1");
 var startGame2 = document.getElementById("startGame2");
@@ -50,12 +51,12 @@ function roomUpdate(data){
 }
 */
 
-function joinRoom(index){
-  socket.emit("joinRoom", {room:index});
+function joinRoom(){
+  socket.emit("joinRoom", {roomName:joinRoomText.value});
 }
 
 function createRoom(){
-  socket.emit("createRoom", {roomName:createRoomText.value})
+  socket.emit("createRoom", {roomName:createRoomText.value});
 }
 
 signup = function(){
