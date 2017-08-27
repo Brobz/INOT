@@ -59,7 +59,7 @@ function update_rooms(data){
       }
       if(new_style) rooms_text.innerHTML += "<h6 style ='color:LawnGreen;'>Room " + String(Number(k) + 1) +  ": " + data[i].room_names[k] + " | Players: " + data[i].room_players[k].length + " </h6>";
       else{
-        rooms_text.innerHTML += "<h6><small>Room " + String(Number(k) + 1) +  ": " + data[i].room_names[k] + " | Players: " + data[i].room_players[k].length + "</small></h6><button onclick = 'joinRoom({roomName: " + data[i].room_names[k] + "})'> JOIN </button>";
+        rooms_text.innerHTML += "<h6><small>Room " + String(Number(k) + 1) +  ": " + data[i].room_names[k] + " | Players: " + data[i].room_players[k].length + "</small></h6><button onclick = 'joinRoom({roomName: " + '"' + data[i].room_names[k] + '"' + "})'> JOIN </button>";
       }
     }
   }

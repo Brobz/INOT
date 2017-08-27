@@ -213,4 +213,6 @@ function UpdateInputs(){
 
 }
 
-setInterval(UpdateInputs, 1000/60);
+setInterval(UpdateRooms, 1000 / 2)
+
+setInterval(UpdateInputs, 1000 / 60);
