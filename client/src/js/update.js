@@ -33,12 +33,11 @@ function end_game(){
 
 function update(self, data){
   available_rooms.innerHTML = "";
-  /*/
+
   for(var i = 0; i < data.rooms.length; i++){
     available_rooms.innerHTML += "Room " + i + 1 +  ": " + data.rooms[i].name + " | Players: " + data.rooms.players.length;
     available_rooms.innerHTML += "\n";
   }
-  /*/
   if (!hasStarted) return;
 
   if (self){
