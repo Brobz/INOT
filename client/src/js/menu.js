@@ -27,7 +27,7 @@ function connected(data){
 
   document.getElementById("connectedText").innerHTML = data.msg;
 
-  socket.on("update", function(data){update(data)});
+  socket.on("update_client", function(data){update(data)});
 
   socket.on("start_game", function(data){start_game(data)});
 
