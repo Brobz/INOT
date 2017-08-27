@@ -53,6 +53,10 @@ function joinRoom(index){
   socket.emit("joinRoom", {room:index});
 }
 
+function createRoom(index){
+  socket.emit("createRoom", {room_index})
+}
+
 signup = function(){
   if(ignInput.style.display == "none"){
 

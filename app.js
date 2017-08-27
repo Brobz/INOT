@@ -120,6 +120,10 @@ io.sockets.on("connection", function(socket){
       }
     });
 
+    socket.on("createRoom", function(data)){
+      
+    }
+
     socket.on("keyPress", function(data){getKeyInput(socket.id, data);});
 
     socket.on("disconnect", function(){Disconnected(socket.id)});
