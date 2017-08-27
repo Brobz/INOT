@@ -29,6 +29,10 @@
 
   <center><p id="connectedText"></p></center>
 
+  <center><input id="input_field" type="text" oninput="update(true, {current_input : this.value})"></center>
+  <center><table id = "game_table"></table></center>
+  <br><br>
+  <center><button onclick="startPhase()" id ="startPhaseButton">START IT UPPP</button></center>
   <div id= "rooms" style="display: none;">
     <div id= "room1">
       ROOM 1
@@ -59,16 +63,11 @@
     </div>
   </div>
 
-
-
-  <center><input type="text" oninput="update(true, {current_input : this.value})"></center>
-  <center><table></table></center>
 </body>
 
 <script src="/socket.io/socket.io.js"></script>
 <script src="/client/src/js/image_loader.js"></script>
 <script src="/client/src/js/menu.js"></script>
-<script src="/client/src/js/input.js"></script>
 <script src="/client/src/js/update.js"></script>
 
 </html>
