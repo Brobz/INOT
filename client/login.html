@@ -14,6 +14,7 @@
 
   <h1> <center> INOT </center></h1>
   <hr>
+  <center><h6 id="connectedText"></h6></center>
   <div id="log_sign">
     <p id="actionText" style= "text-align: center;"> LOG IN </p>
     <center><input type="text" id="nameInput" placeholder="USERNAME"></center>
@@ -21,27 +22,23 @@
     <center><input type="password" id="passInput" placeholder="PASSWORD"></center>
     <br><br>
     <center><button id = "connectButton" onclick = "connect()">LOG IN</button></center>
-    <br>
+    <hr>
     <p id="signUpText"><center>NO ACCOUNT? SIGN UP!</center></p>
     <center><a href = "/signup"><button id = "signButton">SIGN UP</button></a></center>
-    <br><br>
-    <p id="signedText"></p>
   </div>
-
-  <center><h6 id="connectedText"></h6></center>
 
   <center><input id="input_field" type="text" maxlength="12" oninput="getKeys({current_input : this.value})" style="display:none;"></center>
   <center><table id = "game_table" style="display:none;"></table></center>
   <center><button onclick="startPhase()" id ="startGameButton" style="display:none;">START GAME</button></center>
   <hr>
-  <br>
   <center><div id= "rooms" style="display: none;">
     <center><h4> CREATE ROOM </h4></center>
     <center><input id ="create_room_name" type ="text" placeholder="ROOM NAME">    <button onclick="createRoom()">CREATE</button></center>
+    <br>
+    <hr>
     <center><h4> AVAILABLE ROOMS </h4>
-      <hr>
-      <center><h4 id  = "available_rooms"> </h4></center>
-    </center>
+    <center><h4 id  = "available_rooms"> </h4></center>
+  </center>
 
   </div></center>
 
