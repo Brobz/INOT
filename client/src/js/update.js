@@ -32,13 +32,13 @@ function end_game(){
 }
 
 function update(data){
+  console.log("aa");
   rooms_text.innerHTML = "";
-  console.log(data);
-  console.log(data.room_names);
   for(var i = data.length - 1; i > -1; i--){
     for(var k = 0; k < data[i].room_names.length; k++){
-      rooms_text.innerHTML += "Room " + String(Number(k) + 1) +  ": " + data[i].room_names[k] + " | Players: " + data[i].room_sizes[k];
+      console.log("queguey");
       rooms_text.innerHTML += "<br>";
+      rooms_text.innerHTML += "Room " + String(Number(k) + 1) +  ": " + data[i].room_names[k] + " | Players: " + data[i].room_sizes[k];
     }
   }
 

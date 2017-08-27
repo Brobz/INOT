@@ -110,15 +110,18 @@ io.sockets.on("connection", function(socket){
 
 function joinRoom(id, data){
     for(var i in ROOM_LIST){
-      if (ROOM_LIST[i].name == data.roomName){
-        ROOM_LIST[i].addPlayer(PLAYER_LIST[id]);
+      if (ROOM_LIST[i].name == data.roomName && ROOM_LIST[i].players.indexOf(PLAYER_LIST[id]) < 0){
+          ROOM_LIST[i].addPlayer(PLAYER_LIST[id]);
       }
     }
 }
 
 
 function createRoom(id, data){
-  ROOM_LIST.push(Room(data.roomName, 2, 5, ["AAAA00", "AAAA00", "AAAA00", "AAA100", "A0AA00"]));
+  var new_room = Room(data.roomName, 2, 5, ["AAAA00", "AAAA00", "AAAA00", "AAA100", "A0AA00"]);
+  new_room.SOCKET_LIST  = SOCKET_LIST;
+  ROOM_LIST.push(new_room);
+  joinRoom(id, data);
 }
 
 function Disconnected(id) {
@@ -169,14 +172,9 @@ function Update(){
     });
   }
 
-  for(var i in ROOM_LIST){
-    if(ROOM_LIST[i].inGame){
-      for(var k = 0; k < ROOM_LIST[i].players.length; k++){
-        var s = SOCKET_LIST[ROOM_LIST[i].players[k].id];
-        s.emit("update_client", infoPack);
+  for(var key in SOCKET_LIST){
+        SOCKET_LIST[key].emit("update_client", infoPack);
       }
-    }
-  }
 
 }
 
