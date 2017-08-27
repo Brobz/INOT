@@ -101,12 +101,14 @@ io.sockets.on("connection", function(socket){
     if(p === null)
       return;
 
-    socket.on("joinRoom", function(data)){
-      if(ROOM_LIST[data.room].players.length >= ROOM_LIST[data.room].maxSize || ROOM_LIST[data.room].inGame)
+    socket.on("joinRoom", function(data){
+      if(ROOM_LIST[data.room].players.length >= ROOM_LIST[data.room].maxSize || ROOM_LIST[data.room].inGame){
         return;
+      }
       for(var i in ROOM_LIST){
-        if(ROOM_LIST[i].players.indexOf(p) >= 0)
+        if(ROOM_LIST[i].players.indexOf(p) >= 0){
           ROOM_LIST[i].removePlayer(p);
+        }
       }
       ROOM_LIST[data.room].addPlayer(p);
 
@@ -116,7 +118,7 @@ io.sockets.on("connection", function(socket){
           rooms: ROOM_LIST,
         });
       }
-    }
+    });
 
     socket.on("keyPress", function(data){getKeyInput(socket.id, data);});
 
