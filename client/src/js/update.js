@@ -5,7 +5,7 @@ function startPhase(){
   socket.emit("startPhase");
 }
 
-function startItUp(data){
+function start_game(data){
   hasStarted = true;
   table.insertRow(0);
   for(var i = 0; i < data.number_of_players; i++){
@@ -13,7 +13,7 @@ function startItUp(data){
   }
 }
 
-function endItUp(){
+function end_game(){
   hasStarted = false;
 }
 
