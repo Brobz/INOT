@@ -33,8 +33,9 @@ function end_game(){
 
 function update(data){
   console.log("aa");
-  rooms_text.innerHTML = "";
+
   for(var i = data.length - 1; i > -1; i--){
+    rooms_text.innerHTML = "";
     for(var k = 0; k < data[i].room_names.length; k++){
       console.log("queguey");
       rooms_text.innerHTML += "<br>";
