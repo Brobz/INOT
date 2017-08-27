@@ -14,6 +14,7 @@ exports.Room = function(mnS, mxS, colors){
 
   self.startPhase = function() {
     if(self.current_phase == -1){
+      self.inGame = true;
       for(var i = 0; i < self.players.length; i++){
         self.SOCKET_LIST[self.players[i].id].emit("start_game", {number_of_players : self.players.length});
       }
@@ -38,6 +39,7 @@ exports.Room = function(mnS, mxS, colors){
       for(var i = 0; i < self.players.length; i++){
         self.SOCKET_LIST[self.players[i].id].emit("end_game");
       }
+      self.inGame = false;
       self.current_phase = -1;
       self.phases = [];
     }
