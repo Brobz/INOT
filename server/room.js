@@ -1,5 +1,6 @@
-exports.Room = function(mnS, mxS, colors){
+exports.Room = function(name, mnS, mxS, colors){
   var self = {
+    name : name,
     players : [],
     maxSize : mxS,
     minSize : mnS,

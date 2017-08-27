@@ -120,9 +120,9 @@ io.sockets.on("connection", function(socket){
       }
     });
 
-    socket.on("createRoom", function(data)){
-      
-    }
+    socket.on("createRoom", function(data){
+      ROOM_LIST.push(Room(data.roomName, 2, 5, ["AAAA00", "AAAA00", "AAAA00", "AAA100", "A0AA00"]))
+    });
 
     socket.on("keyPress", function(data){getKeyInput(socket.id, data);});
 
