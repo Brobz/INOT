@@ -47,6 +47,14 @@ exports.Room = function(mnS, mxS, colors){
     self.players.push(player);
   }
 
+  self.addSocket = function(socket, id){
+    self.SOCKET_LIST[id] = socket;
+  }
+
+  self.removeSocket = function(id){
+    delete self.SOCKET_LIST[id];
+  }
+
   self.checkForWin = function(){
     return false;
   }

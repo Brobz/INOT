@@ -112,19 +112,19 @@ io.sockets.on("connection", function(socket){
 });
 
 function Disconnected(id) {
-  for(var i in ROOM_LIST){
+  for(var i = 0; i < ROOM_LIST.length; i++){
+
     if(ROOM_LIST[i].players.indexOf(PLAYER_LIST[id]) >= 0){
+
       ROOM_LIST[i].removePlayer(PLAYER_LIST[id]);
+      ROOM_LIST[i].removeSocket(id);
     }
   }
-  for(var i in SOCKET_LIST){
-    var s = SOCKET_LIST[i];
-    s.emit("roomUpdate", {
-      rooms : ROOM_LIST,
-    });
-  }
+
   delete SOCKET_LIST[id];
   delete PLAYER_LIST[id];
+
+
 
 }
 
@@ -190,7 +190,7 @@ function getInput(id, data){
 
 
 function startPhase(id){
-  for(var i in ROOM_LIST){
+  for(var i = 0; i < ROOM_LIST.length; i++){
     if(ROOM_LIST[i].inGame){
       for(var k = 0; k < ROOM_LIST[i].players.length; k++){
         if(ROOM_LIST[i].players[k].id == id) ROOM_LIST[i].startPhase();
