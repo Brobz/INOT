@@ -28,6 +28,7 @@ function start_game(data){
 
 function end_game(){
   hasStarted = false;
+  current_input = -1;
 }
 
 function getKeys(data){
