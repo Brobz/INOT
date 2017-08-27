@@ -31,6 +31,8 @@ function connected(data){
 
   socket.on("end_game", function(){end_game()});
 
+  socket.on("end_phase", function(data){end_phase(data)});
+
   log_sign.style ="display:none;";
 
   rooms.style.display = "";

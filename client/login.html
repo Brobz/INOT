@@ -29,10 +29,10 @@
 
   <center><p id="connectedText"></p></center>
 
-  <center><input id="input_field" type="text" oninput="update(true, {current_input : this.value})"></center>
+  <center><input id="input_field" type="text" maxlength="12" oninput="update(true, {current_input : this.value})"></center>
   <center><table id = "game_table"></table></center>
   <br><br>
-  <center><button onclick="startGame()" id ="startGameButton">START GAME</button></center>
+  <center><button onclick="startPhase()" id ="startGameButton">START GAME</button></center>
   <div id= "rooms" style="display: none;">
     <div id= "room1">
       ROOM 1
