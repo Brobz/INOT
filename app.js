@@ -40,8 +40,6 @@ var SOCKET_LIST = {};
 var PLAYER_LIST = {};
 var ROOM_LIST = [];
 
-ROOM_LIST[0].inGame  = true;
-
 var io = require("socket.io")(server, {});
 io.sockets.on("connection", function(socket){
     var p;
@@ -78,11 +76,6 @@ io.sockets.on("connection", function(socket){
 
             p = Player(socket.id, res[0].ign, null);
             PLAYER_LIST[socket.id] = p;
-
-            ///////////
-            ROOM_LIST[0].addPlayer(p);
-            ROOM_LIST[0].SOCKET_LIST = SOCKET_LIST;
-            //////////
 
             socket.emit("connected", {
               msg: "Logged in as " + p.name,
