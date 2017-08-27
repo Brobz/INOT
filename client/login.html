@@ -33,10 +33,12 @@
   <center><table id = "game_table"></table></center>
   <br><br>
   <center><button onclick="startPhase()" id ="startPhaseButton">START IT UPPP</button></center>
-  <div id= "rooms" style="display: none;">
+  <br>
+  <br>
+  <center><div id= "rooms" style="display: none;">
     <div id= "room1">
       ROOM 1
-      <button id= "joinRoomBtn1"><!-- Agregar metodos onclick--> JOIN </button>
+      <button id= "joinRoomBtn1" onclick="joinRoom(0)"><!-- Agregar metodos onclick--> JOIN </button>
       <button id= "startGameBtn1"><!-- Agregar metodos onclick -->
         Start Game </button>
       <br>
@@ -45,7 +47,7 @@
     </div>
     <div id= "room2">
       ROOM 2
-      <button id= "joinRoomBtn2"><!-- Agregar metodos onclick--> JOIN </button>
+      <button id= "joinRoomBtn2" onclick="joinRoom(1)"><!-- Agregar metodos onclick--> JOIN </button>
       <button id= "startGameBtn2"><!-- Agregar metodos onclick -->
         Start Game </button>
       <br>
@@ -54,14 +56,14 @@
     </div>
     <div id= "room3">
       ROOM 3
-      <button id= "joinRoomBtn3"><!-- Agregar metodos onclick--> JOIN </button>
+      <button id= "joinRoomBtn3" onclick="joinRoom(2)"><!-- Agregar metodos onclick--> JOIN </button>
       <button id= "startGameBtn3"><!-- Agregar metodos onclick -->
         Start Game </button>
       <br>
       <p id="room3PlayersText"></p>
       <br>
     </div>
-  </div>
+  </div></center>
 
 </body>
 

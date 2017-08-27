@@ -47,6 +47,10 @@ function roomUpdate(data){
 }
 */
 
+function joinRoom(index){
+  socket.emit("joinRoom", {room:index});
+}
+
 signup = function(){
   if(ignInput.style.display == "none"){
 
