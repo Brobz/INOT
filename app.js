@@ -77,6 +77,8 @@ io.sockets.on("connection", function(socket){
             p = Player(socket.id, res[0].ign, null);
             PLAYER_LIST[socket.id] = p;
 
+            checkRooms();
+
             socket.emit("connected", {
               msg: "Logged in as " + p.name,
               id: socket.id
@@ -108,12 +110,27 @@ io.sockets.on("connection", function(socket){
 
 });
 
+function checkRooms(){
+  for(var i in ROOM_LIST){
+    if (ROOM_LIST[i].players.length < 1){
+      ROOM_LIST.splice(i, 1);
+      checkRooms();
+      break;
+    }
+  }
+}
+
 function joinRoom(id, data){
     for(var i in ROOM_LIST){
+      if(ROOM_LIST[i].players.indexOf(PLAYER_LIST[id]) >= 0){
+        ROOM_LIST[i].removePlayer(PLAYER_LIST[id]);
+      }
       if (ROOM_LIST[i].name == data.roomName && ROOM_LIST[i].players.indexOf(PLAYER_LIST[id]) < 0){
           ROOM_LIST[i].addPlayer(PLAYER_LIST[id]);
       }
     }
+
+    checkRooms();
 }
 
 
@@ -129,8 +146,8 @@ function createRoom(id, data){
 }
 
 function Disconnected(id) {
+  checkRooms();
   for(var i = 0; i < ROOM_LIST.length; i++){
-
     if(ROOM_LIST[i].players.indexOf(PLAYER_LIST[id]) >= 0){
 
       ROOM_LIST[i].removePlayer(PLAYER_LIST[id]);

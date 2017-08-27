@@ -51,8 +51,8 @@ function roomUpdate(data){
 }
 */
 
-function joinRoom(){
-  socket.emit("joinRoom", {roomName:joinRoomText.value});
+function joinRoom(data){
+  socket.emit("joinRoom", {data});
 }
 
 function createRoom(){

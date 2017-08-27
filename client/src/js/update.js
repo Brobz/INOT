@@ -40,7 +40,7 @@ function update(data){
     rooms_text.innerHTML = "";
     for(var k = 0; k < data[i].room_names.length; k++){
       rooms_text.innerHTML += "<br>";
-      rooms_text.innerHTML += "Room " + String(Number(k) + 1) +  ": " + data[i].room_names[k] + " | Players: " + data[i].room_sizes[k];
+      rooms_text.innerHTML += "Room " + String(Number(k) + 1) +  ": " + data[i].room_names[k] + " | Players: " + data[i].room_sizes[k] + " <button onclick='joinRoom({roomName:data[i].room_names[k]})'>JOIN </button>";
     }
   }
 
