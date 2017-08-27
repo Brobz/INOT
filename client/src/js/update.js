@@ -5,6 +5,7 @@ var current_phase = -1;
 
 function startPhase(){
   socket.emit("startPhase");
+  document.getElementById("startGameButton").style = "display:none;";
 }
 
 function end_phase(data){
@@ -24,11 +25,16 @@ function start_game(data){
   for(var i = 0; i < data.number_of_players; i++){
     table.rows[0].insertCell(0);
   }
+  input_field.style = "";
+  table.style = "";
 }
 
 function end_game(){
   hasStarted = false;
   current_phase = -1;
+  input_field.style = "display:none;";
+  table.style = "display:none;";
+  table.innerHTML = "";
 }
 
 function getKeys(data){
@@ -57,9 +63,11 @@ function update_rooms(data){
           break;
         }
       }
-      if(new_style) rooms_text.innerHTML += "<h6 style ='color:LawnGreen;'>Room " + String(Number(k) + 1) +  ": " + data[i].room_names[k] + " | Players: " + data[i].room_players[k].length + " </h6>";
+      if(new_style) {
+        rooms_text.innerHTML += "<h6 style ='display:inline;color:LawnGreen;'>ROOM " + String(Number(k) + 1) +  ": " + data[i].room_names[k] + " | PLAYERS: " + data[i].room_players[k].length + " </h6><br>";
+      }
       else{
-        rooms_text.innerHTML += "<h6><small>Room " + String(Number(k) + 1) +  ": " + data[i].room_names[k] + " | Players: " + data[i].room_players[k].length + "</small></h6><button onclick = 'joinRoom({roomName: " + '"' + data[i].room_names[k] + '"' + "})'> JOIN </button>";
+        rooms_text.innerHTML += "<h6 style = 'display:inline;'><small>ROOM " + String(Number(k) + 1) +  ": " + data[i].room_names[k] + " | PLAYERS: " + data[i].room_players[k].length + "<button style = 'margin-left:10px;' onclick = 'joinRoom({roomName: " + '"' + data[i].room_names[k] + '"' + "})'> JOIN </button></small></h6> <br>";
       }
     }
   }

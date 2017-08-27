@@ -119,7 +119,14 @@ function checkRooms(){
     }
   }
 
-  UpdateRooms();
+  for(var i in ROOM_LIST){
+    if (ROOM_LIST[i].players.length > 1){
+        ROOM_LIST[i].SOCKET_LIST[ROOM_LIST[i].players[0].id].emit("can_start_phase");
+    }else{
+      ROOM_LIST[i].SOCKET_LIST[ROOM_LIST[i].players[0].id].emit("cant_start_phase");
+    }
+  }
+
 }
 
 function joinRoom(id, data){
@@ -178,6 +185,7 @@ function startPhase(id){
 }
 
 function UpdateRooms(){
+  checkRooms();
   var room_names = [];
   var room_players = [];
   for(var i in ROOM_LIST){

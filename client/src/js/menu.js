@@ -21,6 +21,16 @@ var startGameButtons = [startGame1, startGame2, startGame3];
 
 var winners = ["", "", ""]
 
+function can_start_phase(){
+  if(current_phase < 0){
+    document.getElementById("startGameButton").style = "";
+  }
+}
+
+function cant_start_phase(){
+  document.getElementById("startGameButton").style = "display:none;";
+}
+
 function connected(data){
 
   id = data.id;
@@ -32,6 +42,10 @@ function connected(data){
   socket.on("update_rooms", function(data){update_rooms(data)});
 
   socket.on("start_game", function(data){start_game(data)});
+
+  socket.on("can_start_phase", function(){can_start_phase()});
+
+  socket.on("cant_start_phase", function(){cant_start_phase()});
 
   socket.on("end_game", function(){end_game()});
 

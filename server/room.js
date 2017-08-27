@@ -16,6 +16,7 @@ exports.Room = function(name, mnS, mxS, colors){
   self.startPhase = function() {
     if(self.current_phase == -1){
       self.inGame = true;
+      self.phases = [];
       for(var i = 0; i < self.players.length; i++){
         self.SOCKET_LIST[self.players[i].id].emit("start_game", {number_of_players : self.players.length});
       }
