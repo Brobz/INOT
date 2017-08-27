@@ -116,8 +116,11 @@ io.sockets.on("connection", function(socket){
 });
 
 function joinRoom(id, data){
-  return;
-  //ROOM_LIST.push(Room(data.roomName, 2, 5, ["AAAA00", "AAAA00", "AAAA00", "AAA100", "A0AA00"]));
+    for(var i in ROOM_LIST){
+      if (ROOM_LIST[i].name == data.roomName){
+        ROOM_LIST[i].addPlayer(PLAYER_LIST[id]);
+      }
+    }
 }
 
 
