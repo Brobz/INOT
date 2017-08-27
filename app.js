@@ -118,6 +118,8 @@ function checkRooms(){
       break;
     }
   }
+
+  UpdateRooms();
 }
 
 function joinRoom(id, data){
@@ -175,26 +177,40 @@ function startPhase(id){
   }
 }
 
-function Update(){
+function UpdateRooms(){
   var room_names = [];
-  var room_sizes = [];
+  var room_players = [];
   for(var i in ROOM_LIST){
     room_names.push(ROOM_LIST[i].name);
-    room_sizes.push(ROOM_LIST[i].players.length);
+    room_players.push(ROOM_LIST[i].players);
   }
   var infoPack = [];
   for(var key in PLAYER_LIST){
     infoPack.push({
       current_input : PLAYER_LIST[key].current_input,
       room_names : room_names,
-      room_sizes : room_sizes
+      room_players : room_players
     });
   }
 
   for(var key in SOCKET_LIST){
-        SOCKET_LIST[key].emit("update_client", infoPack);
+        SOCKET_LIST[key].emit("update_rooms", infoPack);
       }
 
 }
 
-setInterval(Update, 1000/60);
+function UpdateInputs(){
+  var infoPack = [];
+  for(var key in PLAYER_LIST){
+    infoPack.push({
+      current_input : PLAYER_LIST[key].current_input
+    });
+  }
+
+  for(var key in SOCKET_LIST){
+        SOCKET_LIST[key].emit("update_inputs", infoPack);
+      }
+
+}
+
+setInterval(UpdateInputs, 1000/60);

@@ -27,7 +27,9 @@ function connected(data){
 
   document.getElementById("connectedText").innerHTML = data.msg;
 
-  socket.on("update_client", function(data){update(data)});
+  socket.on("update_inputs", function(data){update_inputs(data)});
+
+  socket.on("update_rooms", function(data){update_rooms(data)});
 
   socket.on("start_game", function(data){start_game(data)});
 
@@ -52,7 +54,7 @@ function roomUpdate(data){
 */
 
 function joinRoom(data){
-  socket.emit("joinRoom", {data});
+  socket.emit("joinRoom", data);
 }
 
 function createRoom(){
