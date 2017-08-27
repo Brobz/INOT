@@ -102,6 +102,6 @@ try{
       }
   }
 }
-catch{
+catch(e){
 
 }
