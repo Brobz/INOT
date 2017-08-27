@@ -11,9 +11,6 @@ function startItUp(data){
   for(var i = 0; i < data.number_of_players; i++){
     table.rows[0].insertCell(0);
   }
-
-  socket.emit("getInput", {document.getElementById("input_field")});
-
 }
 
 function endItUp(){
@@ -22,7 +19,6 @@ function endItUp(){
 
 function update(self, data){
   if (!hasStarted) return;
-  //fuck
   if (self){
     socket.emit("getInput", data);
     //console.log(data.current_input);
