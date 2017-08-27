@@ -92,9 +92,15 @@ connect = function(){
 
 
 }
+try{
+  nameInput.onkeypress = passInput.onkeypress = function(e){
+      if (!e) e = window.event;
+      var keyCode = e.keyCode || e.which;
+      if (keyCode == '13'){
+        if(connectButton.style.display == "")
+          connectButton.onclick();
+      }
+  }
+}catch{
 
-checkIfReturn = function(e){
-    if (!e) e = window.event;
-    var keyCode = e.keyCode || e.which;
-    if (keyCode == '13') connect();
 }
