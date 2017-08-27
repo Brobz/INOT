@@ -21,7 +21,7 @@
     <br><br>
     <center><button id = "connectButton" onclick = "connect()">LOG IN</button></center>
     <br>
-    <p id="signUpText"><center>NO ACOOUNT? SIGN UP!</center></p>
+    <p id="signUpText"><center>NO ACCOUNT? SIGN UP!</center></p>
     <center><a href = "/signup"><button id = "signButton">SIGN UP</button></a></center>
     <br><br>
     <p id="signedText"></p>
@@ -29,10 +29,47 @@
 
   <center><p id="connectedText"></p></center>
 
+<<<<<<< HEAD
   <center><input id="input_field" type="text" oninput="update(true, {current_input : this.value})"></center>
   <center><table id = "game_table"></table></center>
   <br><br>
   <center><button onclick="startPhase()" id ="startPhaseButton">START IT UPPP</button></center>
+=======
+  <div id= "rooms" style="display: none;">
+    <div id= "room1">
+      ROOM 1
+      <button id= "joinRoomBtn1"><!-- Agregar metodos onclick--> JOIN </button>
+      <button id= "startGameBtn1"><!-- Agregar metodos onclick -->
+        Start Game </button>
+      <br>
+      <p id="room1PlayersText"></p>
+      <br>
+    </div>
+    <div id= "room2">
+      ROOM 2
+      <button id= "joinRoomBtn2"><!-- Agregar metodos onclick--> JOIN </button>
+      <button id= "startGameBtn2"><!-- Agregar metodos onclick -->
+        Start Game </button>
+      <br>
+      <p id="room2PlayersText"></p>
+      <br>
+    </div>
+    <div id= "room3">
+      ROOM 3
+      <button id= "joinRoomBtn3"><!-- Agregar metodos onclick--> JOIN </button>
+      <button id= "startGameBtn3"><!-- Agregar metodos onclick -->
+        Start Game </button>
+      <br>
+      <p id="room3PlayersText"></p>
+      <br>
+    </div>
+  </div>
+
+
+
+  <center><input type="text" oninput="update(true, {current_input : this.value})"></center>
+  <center><table></table></center>
+>>>>>>> 003fd359bde763822ff13e710edc5cd531691fea
 </body>
 
 <script src="/socket.io/socket.io.js"></script>
