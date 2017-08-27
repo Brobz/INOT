@@ -33,12 +33,19 @@ function connected(data){
 
   log_sign.style ="display:none;";
 
+  rooms.style.display = "";
 
 }
 
 function connectionFailed(data){
   document.getElementById("connectedText").innerHTML = data.msg;
 }
+
+/*
+function roomUpdate(data){
+
+}
+*/
 
 signup = function(){
   if(ignInput.style.display == "none"){
