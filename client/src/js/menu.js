@@ -27,9 +27,9 @@ function connected(data){
 
   socket.on("update", function(self, data){update(self, data)});
 
-  socket.on("startGame", function(data){startGame(data)});
+  socket.on("startItUp", function(data){startItUp(data)});
 
-  socket.on("endGame", function(data){endGame(data)});
+  socket.on("endItUp", function(){endItUp()});
 
   log_sign.style ="display:none;";
 

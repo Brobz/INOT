@@ -3,7 +3,7 @@ exports.Player = function(id, name, color){
     name : name,
     color : color,
     id : id,
-    inputs : []
+    current_input : ""
 
   }
 
