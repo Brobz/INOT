@@ -101,6 +101,7 @@ try{
           connectButton.onclick();
       }
   }
-}catch{
+}
+catch{
 
 }
