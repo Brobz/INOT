@@ -161,8 +161,7 @@ function Update(){
   var infoPack = [];
   for(var key in PLAYER_LIST){
     infoPack.push({
-      current_input : PLAYER_LIST[key].current_input,
-      rooms : ROOM_LIST
+      current_input : PLAYER_LIST[key].current_input
     })
   }
 
@@ -170,8 +169,7 @@ function Update(){
     if(ROOM_LIST[i].inGame){
       for(var k = 0; k < ROOM_LIST[i].players.length; k++){
         var s = SOCKET_LIST[ROOM_LIST[i].players[k].id];
-        
-        s.emit("update", infoPack);
+        s.emit("update_client", infoPack);
       }
     }
   }

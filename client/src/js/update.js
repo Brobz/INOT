@@ -32,11 +32,11 @@ function end_game(){
 }
 
 function update(self, data){
-  available_rooms.innerHTML = "";
+  rooms_text.innerHTML = "";
 
   for(var i = 0; i < data.rooms.length; i++){
-    available_rooms.innerHTML += "Room " + i + 1 +  ": " + data.rooms[i].name + " | Players: " + data.rooms.players.length;
-    available_rooms.innerHTML += "\n";
+    rooms_text.innerHTML += "Room " + i + 1 +  ": " + data.rooms[i].name + " | Players: " + data.rooms.players.length;
+    rooms_text.innerHTML += "\n";
   }
   if (!hasStarted) return;
 
