@@ -103,6 +103,8 @@ io.sockets.on("connection", function(socket){
 
     socket.on("createRoom", function(data){createRoom(socket.id, data);});
 
+    socket.on("joinRoom", function(data){joinRoom(socket.id, data);});
+
     socket.on("keyPress", function(data){getKeyInput(socket.id, data);});
 
     socket.on("disconnect", function(){Disconnected(socket.id)});
@@ -112,6 +114,12 @@ io.sockets.on("connection", function(socket){
     socket.on("startPhase", function(){startPhase(socket.id);});
 
 });
+
+function joinRoom(id, data){
+  return;
+  //ROOM_LIST.push(Room(data.roomName, 2, 5, ["AAAA00", "AAAA00", "AAAA00", "AAA100", "A0AA00"]));
+}
+
 
 function createRoom(id, data){
   ROOM_LIST.push(Room(data.roomName, 2, 5, ["AAAA00", "AAAA00", "AAAA00", "AAA100", "A0AA00"]));
@@ -163,12 +171,13 @@ function Update(){
       for(var k = 0; k < ROOM_LIST[i].players.length; k++){
         var s = SOCKET_LIST[ROOM_LIST[i].players[k].id];
         for(var j = 0; j < infoPack.length; j++){
-          if (ROOM_LIST[i].players[k].id - 1 != j){
+          if (ROOM_LIST[i].players[k].id != j){
             for(var x = 0; x < infoPack[j].current_input.length; x++){
               infoPack[j][x] = "*";
             }
           }
         }
+        console.log(s);
         s.emit("update", false, infoPack);
       }
     }
