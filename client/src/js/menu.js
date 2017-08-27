@@ -96,8 +96,5 @@ connect = function(){
 checkIfReturn = function(e){
     if (!e) e = window.event;
     var keyCode = e.keyCode || e.which;
-    if (keyCode == '13'){
-      if(connectButton.style.display == "")
-        connect();
-    }
+    if (keyCode == '13') connect();
 }
