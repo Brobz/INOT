@@ -177,8 +177,8 @@ function Update(){
             }
           }
         }
-        console.log(s);
-        s.emit("update", false, infoPack);
+        
+        s.emit("update", infoPack);
       }
     }
   }
