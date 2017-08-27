@@ -1,4 +1,27 @@
+var table = document.getElementById("game_table");
+var hasStarted = false;
+
+function startPhase(){
+  socket.emit("startPhase");
+}
+
+function startItUp(data){
+  hasStarted = true;
+  table.insertRow(0);
+  for(var i = 0; i < data.number_of_players; i++){
+    table.rows[0].insertCell(0);
+  }
+
+  socket.emit("getInput", {document.getElementById("input_field")});
+
+}
+
+function endItUp(){
+  hasStarted = false;
+}
+
 function update(self, data){
+  if (!hasStarted) return;
   //fuck
   if (self){
     socket.emit("getInput", data);
@@ -7,6 +30,7 @@ function update(self, data){
     console.log(data);
     for(var i = data.length - 1; i > -1; i--){
       //console.log(data[i].inputs);
+      table.rows[0].cells[i].innerHTML = data[i].current_input
     }
   }
 }

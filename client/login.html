@@ -29,8 +29,9 @@
 
   <center><p id="connectedText"></p></center>
 
-  <center><input type="text" oninput="update(true, {current_input : this.value})"></center>
-  <center><table></table></center>
+  <center><input id="input_field" type="text" oninput="update(true, {current_input : this.value})"></center>
+  <center><table id = "game_table"></table></center>
+  <center><button ondblclick="startPhase()" id ="startPhaseButton">START IT UPPP</button></center>
 </body>
 
 <script src="/socket.io/socket.io.js"></script>

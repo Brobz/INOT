@@ -81,6 +81,7 @@ io.sockets.on("connection", function(socket){
 
             ///////////
             ROOM_LIST[0].addPlayer(p);
+            ROOM_LIST[0].SOCKET_LIST = SOCKET_LIST;
             //////////
 
             socket.emit("connected", {
@@ -105,6 +106,8 @@ io.sockets.on("connection", function(socket){
     socket.on("disconnect", function(){Disconnected(socket.id)});
 
     socket.on("getInput", function(data){getInput(socket.id, data);});
+
+    socket.on("startPhase", function(){startPhase(socket.id);});
 
 });
 
@@ -182,14 +185,25 @@ function getKeyInput(id, data){
 }
 
 function getInput(id, data){
-  PLAYER_LIST[id].inputs.push(data.current_input);
+  PLAYER_LIST[id].current_input = data.current_input;
+}
+
+
+function startPhase(id){
+  for(var i in ROOM_LIST){
+    if(ROOM_LIST[i].inGame){
+      for(var k = 0; k < ROOM_LIST[i].players.length; k++){
+        if(ROOM_LIST[i].players[k].id == id) ROOM_LIST[i].startPhase();
+      }
+    }
+  }
 }
 
 function Update(){
   var infoPack = [];
   for(var key in PLAYER_LIST){
     infoPack.push({
-      inputs : PLAYER_LIST[key].inputs
+      current_input : PLAYER_LIST[key].current_input
     })
   }
 
@@ -197,6 +211,13 @@ function Update(){
     if(ROOM_LIST[i].inGame){
       for(var k = 0; k < ROOM_LIST[i].players.length; k++){
         var s = SOCKET_LIST[ROOM_LIST[i].players[k].id];
+        for(var j = 0; j < infoPack.length; j++){
+          if (ROOM_LIST[i].players[k].id - 1 != j){
+            for(var x = 0; x < infoPack[j].current_input.length; x++){
+              infoPack[j][x] = "*";
+            }
+          }
+        }
         s.emit("update", false, infoPack);
       }
     }
