@@ -31,7 +31,7 @@ function connected(data){
 
   socket.on("endGame", function(data){endGame(data)});
 
-  window.location.href = "/play";
+  log_sign.style ="display:none;";
 
 
 }
