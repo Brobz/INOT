@@ -1,5 +1,6 @@
 var table = document.getElementById("game_table");
 var input_field = document.getElementById("input_field");
+var rooms_text = document.getElementById("available_rooms")
 var hasStarted = false;
 var current_phase = -1;
 
@@ -31,7 +32,14 @@ function end_game(){
 }
 
 function update(self, data){
+  available_rooms.innerHTML = "";
+
+  for(var i = 0; i < data.rooms.length; i++){
+    available_rooms.innerHTML += "Room " + i + 1 +  ": " + data.rooms[i].name + " | Players: " + data.rooms.players.length;
+    available_rooms.innerHTML += "\n";
+  }
   if (!hasStarted) return;
+
   if (self){
     socket.emit("getInput", data);
     //console.log(data.current_input);
