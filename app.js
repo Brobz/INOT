@@ -79,7 +79,9 @@ io.sockets.on("connection", function(socket){
             p = Player(socket.id, res[0].ign, null);
             PLAYER_LIST[socket.id] = p;
 
-            ROOM_LIST[0].players.push(p);
+            ///////////
+            ROOM_LIST[0].addPlayer(p);
+            //////////
 
             socket.emit("connected", {
               msg: "Logged in as " + p.name,
