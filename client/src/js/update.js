@@ -46,7 +46,6 @@ function update(data){
   if(current_phase < 0) return;
 
   for(var i = data.length - 1; i > -1; i--){
-    table.rows[0].cells[0].innerHTML = "AAAA";
     table.rows[current_phase].cells[i].innerHTML = data[i].current_input;
   }
 }
